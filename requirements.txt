@@ -1,0 +1,7 @@
+joblib
+scikit-learn
+numpy
+pandas
+streamlit
+lightgbm
+catboost

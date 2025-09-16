@@ -47,30 +47,35 @@ with c5:
     usg_suspicious_lymph_nodes = 0 if usg_lymph_nodes_display == "No" else 1
 
 st.header("FNAC (Cytology)")
-fnac_bethesda = st.selectbox("Bethesda category (I–VI as 1–6)", [1,2,3,4,5,6])
 
-cf1, cf2, cf3 = st.columns(3)
+cf1, cf2, cf3, cf3 = st.columns(4)
 with cf1:
+    fnac_bethesda = st.selectbox("Bethesda category (I–VI as 1–6)", [1,2,3,4,5,6])
+with cf2:
     fnac_nuclear_display = st.radio("Nuclear atypia", ["Absent", "Present"])
     fnac_nuclear_atypia = 0 if fnac_nuclear_display == "Absent" else 1
-with cf2:
+with cf3:
     fnac_colloid_display = st.radio("Colloid", ["Present", "Absent"])
     fnac_colloid = 0 if fnac_colloid_display == "Present" else 1
-with cf3:
+with cf4:
     fnac_cellularity = st.radio("Cellularity", ["Low", "Moderate", "High"])
     fnac_cellularity = {"Low":1, "Moderate":2, "High":3}[fnac_cellularity]
 
 st.header("Hematology / Biochemical")
-tsh = st.number_input("TSH (mIU/L)", min_value=0.0, step=0.1)
-calcitonin = st.number_input("Calcitonin (pg/mL)", min_value=0.0, step=0.1)
-cea = st.number_input("CEA (ng/mL)", min_value=0.0, step=0.1)
-tg = st.number_input("Thyroglobulin (ng/mL)", min_value=0.0, step=0.1)
 
-tgab_display = st.radio("Anti-thyroglobulin antibodies", ["Negative", "Positive"])
-tgab = 0 if tgab_display == "Negative" else 1
-
-nlr = st.number_input("NLR (ratio)", min_value=0.0, step=0.1)
-plr = st.number_input("PLR (ratio)", min_value=0.0, step=0.1)
+ch1, ch2, ch3, h4 = st.columns(4)
+with ch1:
+    tsh = st.number_input("TSH (mIU/L)", min_value=0.0, step=0.1)
+    calcitonin = st.number_input("Calcitonin (pg/mL)", min_value=0.0, step=0.1)
+with ch2:
+    cea = st.number_input("CEA (ng/mL)", min_value=0.0, step=0.1)
+    tg = st.number_input("Thyroglobulin (ng/mL)", min_value=0.0, step=0.1)
+with ch3:
+    nlr = st.number_input("NLR (ratio)", min_value=0.0, step=0.1)
+    plr = st.number_input("PLR (ratio)", min_value=0.0, step=0.1)
+with ch4:
+    tgab_display = st.radio("Anti-thyroglobulin antibodies", ["Negative", "Positive"])
+    tgab = 0 if tgab_display == "Negative" else 1
 
 # --- Submit Button ---
 if st.button("Submit"):

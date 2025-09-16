@@ -53,14 +53,16 @@ with c8:
 st.header("FNAC (Cytology)")
 fnac_bethesda = st.selectbox("Bethesda category (I–VI as 1–6)", [1,2,3,4,5,6])
 
-fnac_nuclear_display = st.radio("Nuclear atypia", ["Absent", "Present"])
-fnac_nuclear_atypia = 0 if fnac_nuclear_display == "Absent" else 1
-
-fnac_colloid_display = st.radio("Colloid", ["Present", "Absent"])
-fnac_colloid = 0 if fnac_colloid_display == "Present" else 1
-
-fnac_cellularity = st.radio("Cellularity", ["Low", "Moderate", "High"])
-fnac_cellularity = {"Low":1, "Moderate":2, "High":3}[fnac_cellularity]
+cf1, cf2, cf3 = st.columns(3)
+with cf1:
+    fnac_nuclear_display = st.radio("Nuclear atypia", ["Absent", "Present"])
+    fnac_nuclear_atypia = 0 if fnac_nuclear_display == "Absent" else 1
+with cf2:
+    fnac_colloid_display = st.radio("Colloid", ["Present", "Absent"])
+    fnac_colloid = 0 if fnac_colloid_display == "Present" else 1
+with cf3:
+    fnac_cellularity = st.radio("Cellularity", ["Low", "Moderate", "High"])
+    fnac_cellularity = {"Low":1, "Moderate":2, "High":3}[fnac_cellularity]
 
 st.header("Hematology / Biochemical")
 tsh = st.number_input("TSH (mIU/L)", min_value=0.0, step=0.1)

@@ -19,12 +19,11 @@ st.title("Thyroid Cancer Prediction")
 st.header("Demographics")
 
 cd1, cd2 = st.columns(2)
-
 with cd1:
-age = st.number_input("Age (years)", min_value=0, max_value=120, step=1)
-gender_display = st.radio("Gender", ["Female", "Male"])
+    age = st.number_input("Age (years)", min_value=0, max_value=120, step=1)
+    gender_display = st.radio("Gender", ["Female", "Male"])
 with cd2:
-gender = 0 if gender_display == "Female" else 1
+    gender = 0 if gender_display == "Female" else 1
 
 # Imaging (USG)
 st.header("Imaging (USG)")

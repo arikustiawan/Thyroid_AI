@@ -132,6 +132,8 @@ if st.button("Diagnose"):
     #Encode categorical columns
     df_encoded = df.copy()
 
+    d = defaultdict(LabelEncoder)
+
     # Apply LabelEncoder only to categorical (object) columns
     df_encoded[df_encoded.select_dtypes(include=['object']).columns] = df_encoded.select_dtypes(include=['object']).apply(
         lambda col: d[col.name].fit_transform(col)

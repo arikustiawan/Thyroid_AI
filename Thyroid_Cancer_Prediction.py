@@ -61,7 +61,7 @@ with c4:
 with c5:
     usg_margins_field = st.radio("Margins", ["Regular", "Irregular/Spiculated"])
     usg_margins = 0 if usg_margins_field == "Regular" else 1
-    usg_suspicious_lymph_nodes_field = st.radio("Suspicious lymph nodes", ["No", "Yes"])
+    usg_lymph_nodes_field = st.radio("Suspicious lymph nodes", ["No", "Yes"])
     usg_suspicious_lymph_nodes = 0 if usg_lymph_nodes_field == "No" else 1
 
 st.header("FNAC (Cytology)")
@@ -70,7 +70,7 @@ cf1, cf2, cf3, cf4 = st.columns(4)
 with cf1:
     fnac_bethesda = st.selectbox("Bethesda category (I–VI as 1–6)", [1,2,3,4,5,6])
 with cf2:
-    fnac_nuclear_atypia_field = st.radio("Nuclear atypia", ["Absent", "Present"])
+    fnac_nuclear_field = st.radio("Nuclear atypia", ["Absent", "Present"])
     fnac_nuclear_atypia = 0 if fnac_nuclear_field == "Absent" else 1
 with cf3:
     fnac_colloid_field = st.radio("Colloid", ["Present", "Absent"])

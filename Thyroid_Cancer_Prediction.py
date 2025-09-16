@@ -9,7 +9,7 @@ st.set_page_config(
 )
 
 # Sidebar
-st.sidebar.image("logo.jpg", use_container_width=True)
+#st.sidebar.image("logo.jpg", use_container_width=True)
 st.sidebar.title("Thyroid Intake Form")
 
 # Title

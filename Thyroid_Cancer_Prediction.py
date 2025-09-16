@@ -37,7 +37,7 @@ with cd1:
     age = st.number_input("Age (years)", min_value=0, max_value=120, step=1)
 with cd2:
     gender = st.radio("Gender", ["Female", "Male"])
-gender = 0 if gender_display == "Female" else 1
+    gender = 0 if gender == "Female" else 1
 
 # Imaging (USG)
 st.header("Imaging (USG)")

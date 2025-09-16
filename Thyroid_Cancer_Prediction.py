@@ -27,7 +27,7 @@ st.header("Imaging (USG)")
 usg_tirads = st.selectbox("TI-RADS Score", [1,2,3,4,5])
 usg_max_size_mm = st.number_input("Largest nodule size (mm)", min_value=0.0, step=0.1)
 
-c1, c2, c3, c4, c5, c6, c7, c8 = st.columns(4)
+c1, c2, c3, c4 = st.columns(4)
 with c1:
     usg_composition = st.radio("Composition", ["Solid", "Mixed", "Cystic"])
     usg_echogenicity = st.radio("Echogenicity", ["Hypo", "Iso", "Hyper"])

@@ -1,4 +1,8 @@
 import streamlit as st
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+import joblib 
+from collections import defaultdict
 
 # Page config
 st.set_page_config(
@@ -112,6 +116,23 @@ if st.button("Diagnose"):
 
     # Convert to DataFrame
     df = pd.DataFrame([data])
+
+    #Encode categorical columns
+    d = defaultdict(LabelEncoder)
+    df = df.apply(lambda x: d[x.name].fit_transform(x))
+    df_encoded = df.copy()
+
+    x = df_encoded.to_numpy()
+    #st.dataframe(df_encoded)
+            
+    # Use the model to predict
+    y = model.predict(x)
+
+    y_prob_cancer = model.predict_proba(x)[0,1]
+    #y_prob_not_cancer = model.predict_proba(x)[0,0]
+
+    score = y_prob_cancer *100
+    st.success(f"The Probability of Thyroid  Cancer is : **{score}**")
 
 # --- Footer ---
 st.markdown(

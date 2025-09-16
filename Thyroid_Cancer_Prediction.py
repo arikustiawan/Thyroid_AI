@@ -10,10 +10,10 @@ st.set_page_config(
 
 # Sidebar
 #st.sidebar.image("logo.jpg", use_container_width=True)
-st.sidebar.title("Thyroid Intake Form")
+st.sidebar.title("Model A: Diagnosis")
 
 # Title
-st.title("Thyroid Cancer Prediction")
+st.title("Predictive Model for Thyroid Cancer Diagnosis")
 
 # --- Input Form ---
 st.header("Demographics")
@@ -21,8 +21,8 @@ st.header("Demographics")
 cd1, cd2 = st.columns(2)
 with cd1:
     age = st.number_input("Age (years)", min_value=0, max_value=120, step=1)
-    gender_display = st.radio("Gender", ["Female", "Male"])
 with cd2:
+    gender_display = st.radio("Gender", ["Female", "Male"])
     gender = 0 if gender_display == "Female" else 1
 
 # Imaging (USG)

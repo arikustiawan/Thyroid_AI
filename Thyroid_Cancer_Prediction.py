@@ -13,7 +13,7 @@ st.set_page_config(
 st.sidebar.title("Thyroid Intake Form")
 
 # Title
-st.title("Thyroid Preoperative Data Collection")
+st.title("Thyroid Cancer Prediction")
 
 # --- Input Form ---
 st.header("Demographics")

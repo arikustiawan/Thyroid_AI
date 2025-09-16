@@ -78,13 +78,13 @@ with ch3:
     nlr = st.number_input("NLR (ratio)", min_value=0.0, step=0.1)
     plr = st.number_input("PLR (ratio)", min_value=0.0, step=0.1)
 with ch4:
-    tgab_display = st.radio("Anti-thyroglobulin antibodies", ["Negative", "Positive"])
-    tgab = 0 if tgab_display == "Negative" else 1
+    tgab = st.radio("Anti-thyroglobulin antibodies", ["Negative", "Positive"])
+    #tgab = 0 if tgab_display == "Negative" else 1
 
 # --- Submit Button ---
-if st.button("Submit"):
-    st.success("✅ Data submitted successfully!")
-    st.write({
+if st.button("Diagnose"):
+    # Build dictionary 
+    data = {
         "age": age,
         "gender": gender,
         "usg_tirads": usg_tirads,
@@ -108,7 +108,10 @@ if st.button("Submit"):
         "tgab": tgab,
         "nlr": nlr,
         "plr": plr
-    })
+    }
+
+    # Convert to DataFrame
+    df = pd.DataFrame([data])
 
 # --- Footer ---
 st.markdown(

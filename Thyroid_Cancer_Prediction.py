@@ -128,14 +128,13 @@ if st.button("Diagnose"):
     df = pd.DataFrame([data])
     st.dataframe(df)
 
-
     #Encode categorical columns
     d = defaultdict(LabelEncoder)
     df = df.apply(lambda x: d[x.name].fit_transform(x))
     df_encoded = df.copy()
-
+    st.dataframe(df_encoded)
+    
     x = df_encoded.to_numpy()
-    #st.dataframe(df_encoded)
             
     # Use the model to predict
     y = model.predict(x)

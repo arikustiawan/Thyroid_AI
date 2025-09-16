@@ -21,43 +21,27 @@ age = st.number_input("Age (years)", min_value=0, max_value=120, step=1)
 gender_display = st.radio("Gender", ["Female", "Male"])
 gender = 0 if gender_display == "Female" else 1
 
+# Imaging (USG)
 st.header("Imaging (USG)")
-# First row: TI-RADS + Size
 c1, c2 = st.columns(2)
 with c1:
     usg_tirads = st.selectbox("TI-RADS Score", [1,2,3,4,5])
-with c2:
     usg_max_size_mm = st.number_input("Largest nodule size (mm)", min_value=0.0, step=0.1)
-
-# Second row: Composition + Echogenicity + Shape
-c3, c4, c5 = st.columns(3)
-with c3:
     usg_composition = st.radio("Composition", ["Solid", "Mixed", "Cystic"])
-with c4:
     usg_echogenicity = st.radio("Echogenicity", ["Hypo", "Iso", "Hyper"])
-with c5:
     usg_shape_display = st.radio("Shape", ["Wider-than-tall", "Taller-than-wide"])
     usg_shape = 0 if usg_shape_display == "Wider-than-tall" else 1
-
-# Third row: Margins + Microcalcifications + Vascularity
-c6, c7, c8 = st.columns(3)
-with c6:
+with c2:
     usg_margins_display = st.radio("Margins", ["Regular", "Irregular/Spiculated"])
     usg_margins = 0 if usg_margins_display == "Regular" else 1
-with c7:
     usg_calcifications_display = st.radio("Microcalcifications", ["Absent", "Present"])
     usg_calcifications = 0 if usg_calcifications_display == "Absent" else 1
-with c8:
     usg_vascularity = st.radio("Vascularity", ["None", "Peripheral", "Intranodular"])
-
-# Fourth row: Signs of invasion + Suspicious LN
-c9, c10 = st.columns(2)
-with c9:
     usg_extrathyroidal_display = st.radio("Signs of invasion", ["No", "Yes"])
     usg_extrathyroidal_extension = 0 if usg_extrathyroidal_display == "No" else 1
-with c10:
     usg_lymph_nodes_display = st.radio("Suspicious lymph nodes", ["No", "Yes"])
     usg_suspicious_lymph_nodes = 0 if usg_lymph_nodes_display == "No" else 1
+
 st.header("FNAC (Cytology)")
 fnac_bethesda = st.selectbox("Bethesda category (I–VI as 1–6)", [1,2,3,4,5,6])
 

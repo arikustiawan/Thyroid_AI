@@ -33,7 +33,7 @@ with c1:
     usg_calcifications_display = st.radio("Calcifications", ["Absent", "Present"])
     usg_calcifications = 0 if usg_calcifications_display == "Absent" else 1
 with c2:
-    usg_echogenicity = st.radio("Echogenicity", ["Hypo", "Iso", "Hyper"]
+    usg_echogenicity = st.radio("Echogenicity", ["Hypo", "Iso", "Hyper"])
     usg_vascularity = st.radio("Vascularity", ["None", "Peripheral", "Intranodular"])
 with c3:
     usg_shape_display = st.radio("Shape", ["Wider-than-tall", "Taller-than-wide"])

@@ -56,7 +56,7 @@ with c3:
 with c4:
     usg_shape_field = st.radio("Shape", ["Wider-than-tall", "Taller-than-wide"])
     usg_shape = 0 if usg_shape_field == "Wider-than-tall" else 1
-    usg_extrathyroidal_extension_field = st.radio("Signs of invasion", ["No", "Yes"])
+    usg_extrathyroidal_field = st.radio("Signs of invasion", ["No", "Yes"])
     usg_extrathyroidal_extension = 0 if usg_extrathyroidal_field == "No" else 1
 with c5:
     usg_margins_field = st.radio("Margins", ["Regular", "Irregular/Spiculated"])

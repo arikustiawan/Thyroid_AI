@@ -147,7 +147,9 @@ if st.button("Diagnose"):
     #y_prob_not_cancer = model.predict_proba(x)[0,0]
 
     score = y_prob_cancer *100
-    st.success(f"The Probability of Thyroid  Cancer is : **{score}**")
+    #treshold f1-score
+    result = "Maligant" if score >= 0.98 else "Benign"
+    st.success(f"The Probability Rate is: **{score:.4f}** → Predicted Result: **{result}**")
 
 # --- Footer ---
 st.markdown(

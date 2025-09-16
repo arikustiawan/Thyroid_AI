@@ -60,7 +60,7 @@ with c4:
     usg_extrathyroidal_extension = 0 if usg_extrathyroidal_field == "No" else 1
 with c5:
     usg_margins_field = st.radio("Margins", ["Regular", "Irregular/Spiculated"])
-    usg_margins = 0 if usg_margins_fieldfield == "Regular" else 1
+    usg_margins = 0 if usg_margins_field == "Regular" else 1
     usg_suspicious_lymph_nodes_field = st.radio("Suspicious lymph nodes", ["No", "Yes"])
     usg_suspicious_lymph_nodes = 0 if usg_lymph_nodes_field == "No" else 1
 

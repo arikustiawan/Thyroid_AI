@@ -4,13 +4,13 @@ import streamlit as st
 st.set_page_config(
     page_title="Thyroid Data Collection",
     layout="wide",
-    page_icon="🧾",
+    page_icon="🩺",
     initial_sidebar_state="expanded"
 )
 
 # Sidebar
 #st.sidebar.image("logo.jpg", use_container_width=True)
-st.sidebar.title("Model A: Diagnosis")
+st.sidebar.title("Model A: Diagnosis ")
 
 # Title
 st.title("Predictive Model for Thyroid Cancer Diagnosis")

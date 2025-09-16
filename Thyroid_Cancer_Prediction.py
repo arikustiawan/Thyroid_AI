@@ -135,9 +135,7 @@ if st.button("Diagnose"):
     #for col in df_encoded.select_dtypes(include=['object']).columns:
      #   le = LabelEncoder()
       #  df_encoded[col] = le.fit_transform(df_encoded[col])
-
-    d = defaultdict(LabelEncoder)
-    df_encoded =  df_encoded.apply(lambda x: d[x.name].fit_transform(x))
+    df_encoded['usg_composition'] = LabelEncoder().fit_transform(df_encoded['usg_composition'])
     st.dataframe(df_encoded)
 
     x = df_encoded.to_numpy()

@@ -148,7 +148,7 @@ if st.button("Diagnose"):
 
     score = y_prob_cancer *100
     #treshold f1-score
-    result = "Maligant" if score >= 0.98 else "Benign"
+    result = "Maligant" if score >= 98 else "Benign"
     st.success(f"The Probability Rate is: **{score:.4f}** → Predicted Result: **{result}**")
 
 # --- Footer ---

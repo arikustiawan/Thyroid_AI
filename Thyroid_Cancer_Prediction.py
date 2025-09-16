@@ -133,9 +133,9 @@ if st.button("Diagnose"):
     df_encoded = df.copy()
 
     # Apply LabelEncoder only to categorical (object) columns
-    for col in df_encoded.select_dtypes(include=['object']).columns:
-        le = LabelEncoder()
-        df_encoded[col] = le.fit_transform(df_encoded[col])
+    df_encoded[df_encoded.select_dtypes(include=['object']).columns] = df_encoded.select_dtypes(include=['object']).apply(
+        lambda col: d[col.name].fit_transform(col)
+    )
     #df_encoded['usg_composition'] = LabelEncoder().fit_transform(df_encoded['usg_composition'])
     st.dataframe(df_encoded)
 

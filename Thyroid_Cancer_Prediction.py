@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 import joblib 
 from collections import defaultdict
+import numpy as np
 
 # Load the trained model
 try:

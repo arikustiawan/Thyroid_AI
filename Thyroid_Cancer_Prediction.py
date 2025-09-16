@@ -126,6 +126,8 @@ if st.button("Diagnose"):
 
     # Convert to DataFrame
     df = pd.DataFrame([data])
+    st.dataframe(df)
+
 
     #Encode categorical columns
     d = defaultdict(LabelEncoder)

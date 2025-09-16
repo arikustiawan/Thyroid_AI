@@ -4,6 +4,16 @@ from sklearn.preprocessing import LabelEncoder
 import joblib 
 from collections import defaultdict
 
+# Load the trained model
+try:
+    model = joblib.load("pickle/diagnose_model.pkl")
+except FileNotFoundError:
+    st.error("Model file not found. Please ensure 'model.pkl' is in the same directory.")
+    st.stop()
+except Exception as e:
+    st.error(f"Error loading the model: {e}")
+    st.stop()
+
 # Page config
 st.set_page_config(
     page_title="Thyroid Data Collection",

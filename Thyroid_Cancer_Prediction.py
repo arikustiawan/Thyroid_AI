@@ -30,19 +30,19 @@ usg_max_size_mm = st.number_input("Largest nodule size (mm)", min_value=0.0, ste
 c1, c2, c3, c4 = st.columns(4)
 with c1:
     usg_composition = st.radio("Composition", ["Solid", "Mixed", "Cystic"])
-    usg_echogenicity = st.radio("Echogenicity", ["Hypo", "Iso", "Hyper"])
-with c2:
-    usg_shape_display = st.radio("Shape", ["Wider-than-tall", "Taller-than-wide"])
-    usg_shape = 0 if usg_shape_display == "Wider-than-tall" else 1
-    usg_margins_display = st.radio("Margins", ["Regular", "Irregular/Spiculated"])
-    usg_margins = 0 if usg_margins_display == "Regular" else 1
-with c3:
     usg_calcifications_display = st.radio("Calcifications", ["Absent", "Present"])
     usg_calcifications = 0 if usg_calcifications_display == "Absent" else 1
+with c2:
+    usg_echogenicity = st.radio("Echogenicity", ["Hypo", "Iso", "Hyper"]
     usg_vascularity = st.radio("Vascularity", ["None", "Peripheral", "Intranodular"])
-with c4:
+with c3:
+    usg_shape_display = st.radio("Shape", ["Wider-than-tall", "Taller-than-wide"])
+    usg_shape = 0 if usg_shape_display == "Wider-than-tall" else 1
     usg_extrathyroidal_display = st.radio("Extrathyroidal", ["No", "Yes"])
     usg_extrathyroidal_extension = 0 if usg_extrathyroidal_display == "No" else 1
+with c4:
+    usg_margins_display = st.radio("Margins", ["Regular", "Irregular/Spiculated"])
+    usg_margins = 0 if usg_margins_display == "Regular" else 1
     usg_lymph_nodes_display = st.radio("Suspicious lymph nodes", ["No", "Yes"])
     usg_suspicious_lymph_nodes = 0 if usg_lymph_nodes_display == "No" else 1
 

@@ -17,8 +17,13 @@ st.title("Thyroid Cancer Prediction")
 
 # --- Input Form ---
 st.header("Demographics")
+
+cd1, cd2 = st.columns(2)
+
+with cd1:
 age = st.number_input("Age (years)", min_value=0, max_value=120, step=1)
 gender_display = st.radio("Gender", ["Female", "Male"])
+with cd2:
 gender = 0 if gender_display == "Female" else 1
 
 # Imaging (USG)
@@ -48,7 +53,7 @@ with c5:
 
 st.header("FNAC (Cytology)")
 
-cf1, cf2, cf3, cf3 = st.columns(4)
+cf1, cf2, cf3, cf4 = st.columns(4)
 with cf1:
     fnac_bethesda = st.selectbox("Bethesda category (I–VI as 1–6)", [1,2,3,4,5,6])
 with cf2:
@@ -63,7 +68,7 @@ with cf4:
 
 st.header("Hematology / Biochemical")
 
-ch1, ch2, ch3, h4 = st.columns(4)
+ch1, ch2, ch3, ch4 = st.columns(4)
 with ch1:
     tsh = st.number_input("TSH (mIU/L)", min_value=0.0, step=0.1)
     calcitonin = st.number_input("Calcitonin (pg/mL)", min_value=0.0, step=0.1)

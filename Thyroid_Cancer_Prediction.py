@@ -132,12 +132,14 @@ if st.button("Diagnose"):
     df_encoded = df.copy()
 
     # Apply LabelEncoder only to categorical (object) columns
-    for col in df_encoded.select_dtypes(include=['object']).columns:
-        le = LabelEncoder()
-        df_encoded[col] = le.fit_transform(df_encoded[col])
+    #for col in df_encoded.select_dtypes(include=['object']).columns:
+     #   le = LabelEncoder()
+      #  df_encoded[col] = le.fit_transform(df_encoded[col])
     
     st.dataframe(df_encoded)
-    
+    d = defaultdict(LabelEncoder)
+    df_encoded =  df_encoded .apply(lambda x: d[x.name].fit_transform(x))
+
     x = df_encoded.to_numpy()
             
     # Use the model to predict

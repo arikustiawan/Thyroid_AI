@@ -144,6 +144,7 @@ if st.button("Diagnose"):
         df_encoded,
         columns=["usg_composition", "usg_echogenicity", "usg_vascularity"]
     )
+    df_encoded = df_encoded.astype(int)
     st.dataframe(df_encoded)
 
     x = df_encoded.to_numpy()

@@ -34,7 +34,7 @@ st.title("Predictive Model for Thyroid Cancer Diagnosis")
 categories = {
     "usg_composition": ["cystic", "mixed", "solid"],
     "usg_echogenicity": ["hyper", "hypo", "iso"],
-    "usg_vascularity": ["none", "peripheral", "intranodular"]
+    "usg_vascularity": ["intranodular", "none", "peripheral" ]
 }
 
 # --- Input Form ---

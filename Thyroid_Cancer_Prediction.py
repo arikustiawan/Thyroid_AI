@@ -154,19 +154,22 @@ if st.button("Diagnose"):
     )
     df_encoded = df_encoded.astype(int)
 
-    df_data = df_encoded.reindex(
-        columns=["age", "gender", "usg_tirads", "usg_max_size_mm","usg_shape", "usg_margins", "usg_calcifications","usg_extrathyroidal_extension", "usg_suspicious_lymph_nodes",
-                 "fnac_bethesda", "fnac_nuclear_atypia", "fnac_colloid", "fnac_cellularity", "tsh", "calcitonin", "cea", "tg", "tgab", "nlr", "plr",
+    df_encoded = df_encoded.reindex(
+        columns=[
                  *[f"usg_composition_{c}" for c in categories["usg_composition"]],
                  *[f"usg_echogenicity_{c}" for c in categories["usg_echogenicity"]],
                  *[f"usg_vascularity_{c}" for c in categories["usg_vascularity"]],
                 ],
         fill_value=0
     )
-    
-    st.dataframe(df_data)
 
-    x = df_data.to_numpy()
+    df_final = pd.concat([data_df["age", "gender", "usg_tirads", "usg_max_size_mm","usg_shape", "usg_margins", "usg_calcifications",
+                          "usg_extrathyroidal_extension", "usg_suspicious_lymph_nodes", "fnac_bethesda", "fnac_nuclear_atypia",
+                          "fnac_colloid", "fnac_cellularity", "tsh", "calcitonin", "cea", "tg", "tgab", "nlr", "plr"], df_encoded], axis=1)
+    
+    st.dataframe(df_final)
+
+    x = df_final.to_numpy()
     #st.dataframe(x)
     # Use the model to predict
     y = model.predict(x)

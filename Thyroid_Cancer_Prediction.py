@@ -154,7 +154,7 @@ if st.button("Diagnose"):
     )
     df_encoded = df_encoded.astype(int)
 
-    df_encoded = df_encoded.reindex(
+    df_data = df_encoded.reindex(
         columns=["age", "gender", "usg_tirads", "usg_max_size_mm","usg_shape", "usg_margins", "usg_calcifications","usg_extrathyroidal_extension", "usg_suspicious_lymph_nodes",
                  "fnac_bethesda", "fnac_nuclear_atypia", "fnac_colloid", "fnac_cellularity", "tsh", "calcitonin", "cea", "tg", "tgab", "nlr", "plr",
                  *[f"usg_composition_{c}" for c in categories["usg_composition"]],
@@ -164,17 +164,16 @@ if st.button("Diagnose"):
         fill_value=0
     )
     
-    st.dataframe(df_encoded)
+    st.dataframe(df_data)
 
-    x = df_encoded.to_numpy()
+    x = df_data.to_numpy()
     #st.dataframe(x)
     # Use the model to predict
     y = model.predict(x)
     
     y_prob_cancer = model.predict_proba(x)[0,1]
     y_prob_not_cancer = model.predict_proba(x)[0,0]
-    st.success({y_prob_not_cancer})
-    score = y_prob_cancer *100
+
     #treshold f1-score
     result = "Maligant" if score >= 98 else "Benign"
     st.success(f"The Probability Rate is: **{score:.4f}** → Predicted Result: **{result}**")

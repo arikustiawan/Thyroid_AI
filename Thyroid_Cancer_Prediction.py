@@ -32,7 +32,7 @@ st.title("Predictive Model for Thyroid Cancer Diagnosis")
 
 # Define all categories same as in training data
 categories = {
-    "usg_composition": ["solid", "mixed", "cystic"],
+    "usg_composition": ["cystic", "mixed", "solid"],
     "usg_echogenicity": ["hypo", "iso", "hyper"],
     "usg_vascularity": ["none", "peripheral", "intranodular"]
 }

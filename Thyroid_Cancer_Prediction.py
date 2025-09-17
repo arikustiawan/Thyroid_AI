@@ -30,6 +30,13 @@ st.sidebar.title("Model A: Diagnosis ")
 # Title
 st.title("Predictive Model for Thyroid Cancer Diagnosis")
 
+# Define all categories same as in training data
+categories = {
+    "usg_composition": ["solid", "mixed", "cystic"],
+    "usg_echogenicity": ["hypo", "iso", "hyper"],
+    "usg_vascularity": ["none", "peripheral", "intranodular"]
+}
+
 # --- Input Form ---
 st.header("Demographics")
 
@@ -48,12 +55,12 @@ with c1:
     usg_tirads = st.selectbox("TI-RADS Score", [1,2,3,4,5])
     usg_max_size_mm = st.number_input("Largest nodule size (mm)", min_value=0.0, step=0.1)
 with c2:
-    usg_composition = st.radio("Composition", ["solid", "mixed", "cystic"])
+    usg_composition = st.radio("Composition", categories["usg_composition"])
     usg_calcifications_field = st.radio("Microcalcifications", ["Absent", "Present"])
     usg_calcifications = 0 if usg_calcifications_field == "Absent" else 1
 with c3:
-    usg_echogenicity = st.radio("Echogenicity", ["hypo", "iso", "hyper"])
-    usg_vascularity = st.radio("Vascularity", ["none", "peripheral", "intranodular"])
+    usg_echogenicity = st.radio("Echogenicity", categories["usg_echogenicity"])
+    usg_vascularity = st.radio("Vascularity", categories["usg_vascularity"])
 with c4:
     usg_shape_field = st.radio("Shape", ["Wider-than-tall", "Taller-than-wide"])
     usg_shape = 0 if usg_shape_field == "Wider-than-tall" else 1
@@ -144,7 +151,14 @@ if st.button("Diagnose"):
         df_encoded,
         columns=["usg_composition", "usg_echogenicity", "usg_vascularity"]
     )
-    df_encoded = df_encoded.astype(int)
+    df_input = pd.get_dummies(df_input).reindex(
+        columns=[f"usg_composition_{c}" for c in categories["usg_composition"]] +
+        [f"usg_echogenicity_{c}" for c in categories["usg_echogenicity"]] +
+        [f"usg_vascularity_{c}" for c in categories["usg_vascularity"]],
+        fill_value=0
+    ).astype(int)
+    
+    #df_encoded = df_encoded.astype(int)
     st.dataframe(df_encoded)
 
     x = df_encoded.to_numpy()

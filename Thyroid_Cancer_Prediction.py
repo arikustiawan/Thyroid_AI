@@ -143,10 +143,11 @@ if st.button("Diagnose"):
     st.dataframe(df_encoded)
 
     x = df_encoded.to_numpy()
-            
+    st.dataframe(x)
+    
     # Use the model to predict
     y = model.predict(x)
-
+    
     y_prob_cancer = model.predict_proba(x)[:,1]
     #y_prob_not_cancer = model.predict_proba(x)[0,0]
 

@@ -139,7 +139,11 @@ if st.button("Diagnose"):
      #   lambda col: d[col.name].fit_transform(col)
     #)
     #df_encoded['usg_composition'] = LabelEncoder().fit_transform(df_encoded['usg_composition'])
-    df_encoded=pd.get_dummies(df_encoded, columns=["usg_composition"])
+    #df_encoded=pd.get_dummies(df_encoded, columns=["usg_composition"])
+    df_encoded = pd.get_dummies(
+        df_encoded,
+        columns=["usg_composition", "usg_echogenicity", "usg_vascularity"]
+    )
     st.dataframe(df_encoded)
 
     x = df_encoded.to_numpy()

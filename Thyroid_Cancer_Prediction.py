@@ -147,7 +147,7 @@ if st.button("Diagnose"):
     st.dataframe(df_encoded)
 
     x = df_encoded.to_numpy()
-    st.dataframe(x)
+    #st.dataframe(x)
     # Use the model to predict
     y = model.predict(x)
     

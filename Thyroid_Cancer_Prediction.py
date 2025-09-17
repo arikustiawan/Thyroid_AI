@@ -132,13 +132,14 @@ if st.button("Diagnose"):
     #Encode categorical columns
     df_encoded = df.copy()
 
-    d = defaultdict(LabelEncoder)
+    #d = defaultdict(LabelEncoder)
 
     # Apply LabelEncoder only to categorical (object) columns
-    df_encoded[df_encoded.select_dtypes(include=['object']).columns] = df_encoded.select_dtypes(include=['object']).apply(
-        lambda col: d[col.name].fit_transform(col)
-    )
+    #df_encoded[df_encoded.select_dtypes(include=['object']).columns] = df_encoded.select_dtypes(include=['object']).apply(
+     #   lambda col: d[col.name].fit_transform(col)
+    #)
     #df_encoded['usg_composition'] = LabelEncoder().fit_transform(df_encoded['usg_composition'])
+    df_encoded=pd.get_dummies(df_encoded, columns=["usg_echogenicity"])
     st.dataframe(df_encoded)
 
     x = df_encoded.to_numpy()
@@ -146,7 +147,7 @@ if st.button("Diagnose"):
     # Use the model to predict
     y = model.predict(x)
 
-    y_prob_cancer = model.predict_proba(x)[0,1]
+    y_prob_cancer = model.predict_proba(x)[:,1]
     #y_prob_not_cancer = model.predict_proba(x)[0,0]
 
     score = y_prob_cancer *100

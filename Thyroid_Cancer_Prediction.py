@@ -163,9 +163,9 @@ if st.button("Diagnose"):
         fill_value=0
     )
 
-    df_final = pd.concat([df["age", "gender", "usg_tirads", "usg_max_size_mm","usg_shape", "usg_margins", "usg_calcifications",
+    df_final = pd.concat([df[["age", "gender", "usg_tirads", "usg_max_size_mm","usg_shape", "usg_margins", "usg_calcifications",
                           "usg_extrathyroidal_extension", "usg_suspicious_lymph_nodes", "fnac_bethesda", "fnac_nuclear_atypia",
-                          "fnac_colloid", "fnac_cellularity", "tsh", "calcitonin", "cea", "tg", "tgab", "nlr", "plr"], df_encoded], axis=1)
+                          "fnac_colloid", "fnac_cellularity", "tsh", "calcitonin", "cea", "tg", "tgab", "nlr", "plr"]], df_encoded], axis=1)
     
     st.dataframe(df_final)
 

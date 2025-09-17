@@ -175,8 +175,8 @@ if st.button("Diagnose"):
     y = model.predict(x)
     
     y_prob_cancer = model.predict_proba(x)[0,1]
-    y_prob_not_cancer = model.predict_proba(x)[0,0]
-
+    #y_prob_not_cancer = model.predict_proba(x)[0,0]
+    score = y_prob_cancer * 100
     #treshold f1-score
     result = "Maligant" if score >= 98 else "Benign"
     st.success(f"The Probability Rate is: **{score:.4f}** → Predicted Result: **{result}**")

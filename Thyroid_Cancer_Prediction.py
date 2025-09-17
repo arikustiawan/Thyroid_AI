@@ -147,21 +147,12 @@ if st.button("Diagnose"):
     #)
     #df_encoded['usg_composition'] = LabelEncoder().fit_transform(df_encoded['usg_composition'])
     #df_encoded=pd.get_dummies(df_encoded, columns=["usg_composition"])
+    
     df_encoded = pd.get_dummies(
         df_encoded,
         columns=["usg_composition", "usg_echogenicity", "usg_vascularity"]
     )
-    df_encoded = pd.get_dummies(df_encoded).reindex(
-        columns=["age", "gender","usg_tirads","usg_max_size_mm", "usg_shape", "usg_margins", "usg_calcifications",
-                  "usg_extrathyroidal_extension", "usg_suspicious_lymph_nodes", "fnac_nuclear_atypia",
-                  "fnac_colloid","fnac_cellularity","tsh","calcitonin","cea","tg","tgab","nlr","plr"] +
-                 [f"usg_composition_{c}" for c in categories["usg_composition"]] +
-        [f"usg_echogenicity_{c}" for c in categories["usg_echogenicity"]] +
-        [f"usg_vascularity_{c}" for c in categories["usg_vascularity"]],
-        fill_value=0
-    ).astype(int)
-    
-    #df_encoded = df_encoded.astype(int)
+    df_encoded = df_encoded.astype(int)
     st.dataframe(df_encoded)
 
     x = df_encoded.to_numpy()

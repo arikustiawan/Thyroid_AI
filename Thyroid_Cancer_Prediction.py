@@ -48,12 +48,12 @@ with c1:
     usg_tirads = st.selectbox("TI-RADS Score", [1,2,3,4,5])
     usg_max_size_mm = st.number_input("Largest nodule size (mm)", min_value=0.0, step=0.1)
 with c2:
-    usg_composition = st.radio("Composition", ["Solid", "Mixed", "Cystic"])
+    usg_composition = st.radio("Composition", ["solid", "mixed", "cystic"])
     usg_calcifications_field = st.radio("Microcalcifications", ["Absent", "Present"])
     usg_calcifications = 0 if usg_calcifications_field == "Absent" else 1
 with c3:
-    usg_echogenicity = st.radio("Echogenicity", ["Hypo", "Iso", "Hyper"])
-    usg_vascularity = st.radio("Vascularity", ["None", "Peripheral", "Intranodular"])
+    usg_echogenicity = st.radio("Echogenicity", ["hypo", "iso", "hyper"])
+    usg_vascularity = st.radio("Vascularity", ["none", "peripheral", "intranodular"])
 with c4:
     usg_shape_field = st.radio("Shape", ["Wider-than-tall", "Taller-than-wide"])
     usg_shape = 0 if usg_shape_field == "Wider-than-tall" else 1

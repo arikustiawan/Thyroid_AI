@@ -81,8 +81,8 @@ with cf2:
     fnac_nuclear_field = st.radio("Nuclear atypia", ["Absent", "Present"])
     fnac_nuclear_atypia = 0 if fnac_nuclear_field == "Absent" else 1
 with cf3:
-    fnac_colloid_field = st.radio("Colloid", ["Present", "Absent"])
-    fnac_colloid = 0 if fnac_colloid_field == "Present" else 1
+    fnac_colloid_field = st.radio("Colloid", ["Absent","Present",])
+    fnac_colloid = 0 if fnac_colloid_field == "Absent" else 1
 with cf4:
     fnac_cellularity = st.radio("Cellularity", ["Low", "Moderate", "High"])
     fnac_cellularity = {"Low":1, "Moderate":2, "High":3}[fnac_cellularity]

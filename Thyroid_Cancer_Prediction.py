@@ -139,11 +139,10 @@ if st.button("Diagnose"):
      #   lambda col: d[col.name].fit_transform(col)
     #)
     #df_encoded['usg_composition'] = LabelEncoder().fit_transform(df_encoded['usg_composition'])
-    df_encoded=pd.get_dummies(df_encoded, columns=["usg_echogenicity"])
+    df_encoded=pd.get_dummies(df_encoded, columns=["usg_composition"])
     st.dataframe(df_encoded)
 
     x = df_encoded.to_numpy()
-    st.dataframe(x)
     
     # Use the model to predict
     y = model.predict(x)

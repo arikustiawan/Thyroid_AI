@@ -134,7 +134,7 @@ if st.button("Diagnose"):
 
     # Convert to DataFrame
     df = pd.DataFrame([data])
-    st.dataframe(df)
+    #st.dataframe(df)
 
     #Encode categorical columns
     df_encoded = df.copy()
@@ -167,7 +167,7 @@ if st.button("Diagnose"):
                           "usg_extrathyroidal_extension", "usg_suspicious_lymph_nodes", "fnac_bethesda", "fnac_nuclear_atypia",
                           "fnac_colloid", "fnac_cellularity", "tsh", "calcitonin", "cea", "tg", "tgab", "nlr", "plr"]], df_encoded], axis=1)
     
-    st.dataframe(df_final)
+    #st.dataframe(df_final)
 
     x = df_final.to_numpy()
     #st.dataframe(x)

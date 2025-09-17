@@ -151,7 +151,7 @@ if st.button("Diagnose"):
         df_encoded,
         columns=["usg_composition", "usg_echogenicity", "usg_vascularity"]
     )
-    df_input = pd.get_dummies(df_input).reindex(
+    df_encoded = pd.get_dummies(df_encoded).reindex(
         columns=[f"usg_composition_{c}" for c in categories["usg_composition"]] +
         [f"usg_echogenicity_{c}" for c in categories["usg_echogenicity"]] +
         [f"usg_vascularity_{c}" for c in categories["usg_vascularity"]],
